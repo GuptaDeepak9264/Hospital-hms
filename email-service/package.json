@@ -1,0 +1,13 @@
+{
+  "name": "hms-email-service",
+  "version": "1.0.0",
+  "description": "HMS Serverless Email Service — sends Gmail emails via SMTP",
+  "scripts": {
+    "offline": "serverless offline",
+    "deploy": "serverless deploy"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-offline": "^13.3.3"
+  }
+}

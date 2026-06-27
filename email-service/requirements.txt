@@ -1,0 +1,4 @@
+# The email handler uses only Python standard library (smtplib, email, json, os).
+# No third-party packages required for the core functionality.
+# python-dotenv is used if you want to load .env in local testing outside serverless-offline.
+python-dotenv==1.0.1

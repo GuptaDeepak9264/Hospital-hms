@@ -1,0 +1,41 @@
+service: hms-email-service
+
+frameworkVersion: '3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: us-east-1
+  stage: dev
+  environment:
+    GMAIL_USER: ${env:GMAIL_USER}
+    GMAIL_APP_PASSWORD: ${env:GMAIL_APP_PASSWORD}
+    FROM_NAME: ${env:FROM_NAME, 'HMS Hospital'}
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 3001
+    host: localhost
+    noPrependStageInUrl: false
+
+functions:
+  sendEmail:
+    handler: handler.send_email
+    events:
+      - http:
+          path: email/send
+          method: post
+          cors: true
+
+  healthCheck:
+    handler: handler.health_check
+    events:
+      - http:
+          path: email/health
+          method: get
+          cors: true
